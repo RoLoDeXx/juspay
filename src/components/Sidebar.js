@@ -29,16 +29,23 @@ export default function Sidebar() {
                   key={`${x}-sideArea`}
                   draggableId={`${x}-sideArea`}
                   index={i}
+                  isDragging={() => {
+                    alert("yes");
+                  }}
                 >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
+                  {(provided, snapshot) => (
+                    <React.Fragment>
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="my-2"
+                        isDragging={snapshot.isDragging}
+                      >
+                        {getComponent(x)}
+                      </li>
+                      {snapshot.isDragging && getComponent(x)}
+                    </React.Fragment>
                   )}
                 </Draggable>
               );
@@ -85,35 +92,37 @@ export default function Sidebar() {
       {/* Control */}
       <div className="font-bold"> {"Control"} </div>
       <Droppable droppableId="sideArea-control" type="COMPONENTS">
-        {(provided) => (
-          <ul
-            className="sideArea-control my-3"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {controlComponents.map((x, i) => {
-              return (
-                <Draggable
-                  key={`${x}-sideArea`}
-                  draggableId={`${x}-sideArea`}
-                  index={i}
-                >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </ul>
-        )}
+        {(provided) => {
+          return (
+            <ul
+              className="sideArea-control my-3"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {controlComponents.map((x, i) => {
+                return (
+                  <Draggable
+                    key={`${x}-sideArea`}
+                    draggableId={`${x}-sideArea`}
+                    index={i}
+                  >
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="my-2"
+                      >
+                        {getComponent(x)}
+                      </li>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
+            </ul>
+          );
+        }}
       </Droppable>
 
       {/* Events */}

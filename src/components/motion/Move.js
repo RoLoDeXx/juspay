@@ -12,7 +12,7 @@ const Move = ({ character, comp_id }) => {
 
     var left = el.offsetLeft;
     el.style.position = "relative";
-    el.style.left = left + steps + "px";
+    el.style.left = left + steps * 10 + "px";
   };
 
   return (

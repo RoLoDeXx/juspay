@@ -12,7 +12,7 @@ const MoveY = ({ character, comp_id }) => {
 
     var top = el.offsetTop;
     el.style.position = "relative";
-    el.style.top = top + steps + "px";
+    el.style.top = top + steps * 10 + "px";
   };
 
   return (
