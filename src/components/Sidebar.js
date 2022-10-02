@@ -71,15 +71,18 @@ export default function Sidebar() {
                   draggableId={`${x}-sideArea`}
                   index={i}
                 >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
+                  {(provided, snapshot) => (
+                    <React.Fragment>
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="my-2"
+                      >
+                        {getComponent(x)}
+                      </li>
+                      {snapshot.isDragging && getComponent(x)}
+                    </React.Fragment>
                   )}
                 </Draggable>
               );
@@ -106,15 +109,18 @@ export default function Sidebar() {
                     draggableId={`${x}-sideArea`}
                     index={i}
                   >
-                    {(provided) => (
-                      <li
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className="my-2"
-                      >
-                        {getComponent(x)}
-                      </li>
+                    {(provided, snapshot) => (
+                      <React.Fragment>
+                        <li
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className="my-2"
+                        >
+                          {getComponent(x)}
+                        </li>
+                        {snapshot.isDragging && getComponent(x)}
+                      </React.Fragment>
                     )}
                   </Draggable>
                 );
@@ -141,15 +147,18 @@ export default function Sidebar() {
                   draggableId={`${x}-sideArea`}
                   index={i}
                 >
-                  {(provided) => (
-                    <li
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="my-2"
-                    >
-                      {getComponent(x)}
-                    </li>
+                  {(provided, snapshot) => (
+                    <React.Fragment>
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        className="my-2"
+                      >
+                        {getComponent(x)}
+                      </li>
+                      {snapshot.isDragging && getComponent(x)}
+                    </React.Fragment>
                   )}
                 </Draggable>
               );
